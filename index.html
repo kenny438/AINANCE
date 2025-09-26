@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Finance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Immediately-invoked function to set theme and avoid FOUC
+      (function() {
+        if (localStorage.theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+
+      tailwind.config = {
+        darkMode: 'class', // Enable class-based dark mode
+        theme: {
+          extend: {
+            colors: {
+              // Light theme (default) with CSS variable fallbacks
+              'background': 'var(--color-background, #F0F2F5)',
+              'surface': 'var(--color-surface, #FFFFFF)',
+              'border': 'var(--color-border, #DEE2E6)',
+              'primary': 'var(--color-primary, #00A884)',
+              'secondary': 'var(--color-secondary, #F8F9FA)',
+              'accent': 'var(--color-accent, #00876A)',
+              'text-primary': 'var(--color-text-primary, #111B21)',
+              'text-secondary': 'var(--color-text-secondary, #667781)',
+              'text-on-primary': 'var(--color-text-on-primary, #FFFFFF)',
+
+              // Dark theme colors with CSS variable fallbacks
+              'dark-background': 'var(--dark-color-background, #000000)',
+              'dark-surface': 'var(--dark-color-surface, #151515)',
+              'dark-border': 'var(--dark-color-border, #2A2A2A)',
+              'dark-primary': 'var(--dark-color-primary, #00A884)',
+              'dark-secondary': 'var(--dark-color-secondary, #1C1C1C)',
+              'dark-accent': 'var(--dark-color-accent, #00876A)',
+              'dark-text-primary': 'var(--dark-color-text-primary, #e8e8e8)',
+              'dark-text-secondary': 'var(--dark-color-text-secondary, #6e6e73)',
+              'dark-text-on-primary': 'var(--dark-color-text-on-primary, #FFFFFF)',
+            },
+            animation: {
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'fade-in': 'fadeIn 0.5s ease-out forwards',
+              'typing': 'typing 2s steps(22, end) forwards, blink .75s step-end infinite',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: 0, transform: 'translateY(10px)' },
+                '100%': { opacity: 1, transform: 'translateY(0)' },
+              },
+              typing: {
+                'from': { width: '0' },
+                'to': { width: '100%' }
+              },
+              blink: {
+                'from, to': { borderColor: 'transparent' },
+                '50%': { borderColor: 'currentColor' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      .grid-cols-53 {
+        grid-template-columns: repeat(53, minmax(0, 1fr));
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.17.0",
+    "@supabase/supabase-js": "https://aistudiocdn.com/@supabase/supabase-js@^2.44.4"
+  }
+}
+</script>
+</head>
+  <body class="bg-background dark:bg-dark-background text-text-primary dark:text-dark-text-primary">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
