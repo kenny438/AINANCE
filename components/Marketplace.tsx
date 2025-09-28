@@ -6,6 +6,7 @@ import StarIcon from './icons/StarIcon';
 import { MARKETPLACE_ITEM_TYPES } from '../constants';
 import WandIcon from './icons/WandIcon';
 import RepoIcon from './icons/RepoIcon';
+import TrollEasterEggModal from './TrollEasterEggModal';
 
 interface MarketplaceProps {
   items: MarketplaceItem[];
@@ -174,6 +175,15 @@ const Marketplace: React.FC<MarketplaceProps> = ({ items, themes, onPurchase, on
   const [searchTerm, setSearchTerm] = useState('');
   const [filterType, setFilterType] = useState('All');
   const [activeTab, setActiveTab] = useState<'assets' | 'themes'>('assets');
+  const [titleClicks, setTitleClicks] = useState(0);
+  const [showTrollModal, setShowTrollModal] = useState(false);
+
+  useEffect(() => {
+    if (titleClicks >= 10) {
+        setShowTrollModal(true);
+        setTitleClicks(0);
+    }
+  }, [titleClicks]);
   
   const filteredItems = items.filter(item =>
       (item.name.toLowerCase().includes(searchTerm.toLowerCase()) || item.description.toLowerCase().includes(searchTerm.toLowerCase())) &&
@@ -198,7 +208,7 @@ const Marketplace: React.FC<MarketplaceProps> = ({ items, themes, onPurchase, on
 
   return (
     <div className="max-w-7xl mx-auto w-full bg-surface dark:bg-dark-surface rounded-2xl shadow-lg border border-border dark:border-dark-border p-6 md:p-8">
-      <h1 className="text-3xl font-bold text-text-primary dark:text-dark-text-primary mb-2">The AI Marketplace</h1>
+      <h1 onClick={() => setTitleClicks(c => c + 1)} className="text-3xl font-bold text-text-primary dark:text-dark-text-primary mb-2 cursor-pointer select-none">The AI Marketplace</h1>
       <p className="text-text-secondary dark:text-dark-text-secondary mb-6">Discover, purchase, and deploy models, prompts, workflows, and themes.</p>
       
       <div className="border-b border-border dark:border-dark-border mb-8">
@@ -306,6 +316,7 @@ const Marketplace: React.FC<MarketplaceProps> = ({ items, themes, onPurchase, on
             </div>
         </div>
       )}
+      {showTrollModal && <TrollEasterEggModal onClose={() => setShowTrollModal(false)} />}
     </div>
   );
 };
