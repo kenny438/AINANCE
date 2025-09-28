@@ -274,12 +274,8 @@ const App: React.FC = () => {
         }
     };
     
-    // Fetch the initial session using Supabase v2 API
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      handleSessionChange(session);
-    });
-
-    // Set up a listener for auth state changes using Supabase v2 API
+    // Set up a listener for auth state changes using Supabase v2 API.
+    // This is called once with the initial session state, and then for any auth changes.
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       handleSessionChange(session);
     });

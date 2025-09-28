@@ -1,6 +1,5 @@
 
 
-
 import { LeaderboardUser, MarketplaceItem, Transaction, AssetType, AssetLanguage, UserAsset, UserActivity, Post, AppAttachment, MarketplaceItemType, TradableAsset, PriceDataPoint, StakingPool, InvestmentStrategy, RiskLevel, Organization, ChatMessage, ThemeItem } from './types';
 
 const userPosts = [
@@ -441,433 +440,129 @@ export const MOCK_MARKETPLACE_ITEMS: MarketplaceItem[] = [
     { id: '4', name: 'Over-engineered AI "Hello World"', description: 'A hyper-optimized, enterprise-grade "Hello World" template, powered by a proprietary neural network. Future-proof your greetings.', author: 'VectorBro', price: 25000n, type: 'Template', rating: 2.1, reviews: 42, tags: ['ai', 'enterprise', 'hype'], version: '0.1.0-alpha', language: 'Go', code: 'package main\n\nimport "fmt"\n\nfunc main() {\n\t// This is running on a proprietary, hyper-optimized neural network.\n\tfmt.Println("Hello, AI Overlord!")\n}' },
     { id: '5', name: 'Go Microservice Kit', description: 'Starter kit for building scalable microservices in Go.', author: 'GoPioneers', price: 1800n, type: 'Template', rating: 4.7, reviews: 312, tags: ['backend', 'go', 'microservice'], version: '1.5.3', language: 'Go', code: 'package main\n\nimport (\n\t"fmt"\n\t"net/http"\n)\n\nfunc handler(w http.ResponseWriter, r *http.Request) {\n\tfmt.Fprintf(w, "Hello from your Go microservice!")\n}\n\nfunc main() {\n\thttp.HandleFunc("/", handler)\n\thttp.ListenAndServe(":8080", nil)\n}' },
     { id: '6', name: 'Python Data Scraping Script', description: 'A snippet to easily scrape web data.', author: 'DataMiners', price: 750n, type: 'Snippet', rating: 4.5, reviews: 250, tags: ['data', 'python', 'scraping'], version: '2.1.0', language: 'Python', code: 'import requests\nfrom bs4 import BeautifulSoup\n\nURL = "http://example.com"\npage = requests.get(URL)\nsoup = BeautifulSoup(page.content, "html.parser")\n\n# Find all h1 tags\nresults = soup.find_all("h1")\nfor result in results:\n\tprint(result.text)' },
-    { id: '7', name: 'MarketGPT Pro', description: 'An AI model that predicts stock market trends with questionable accuracy. High risk, high reward!', author: 'AI Prophet', price: 50000n, type: 'AI Model', rating: 4.8, reviews: 750, tags: ['finance', 'prediction', 'LLM'], version: '2.3.0', isFeatured: true, language: 'Python', code: 'import random\n\ndef predict_market(ticker):\n\t# Advanced AI algorithm (patent pending)\n\tprint(f"Analyzing {ticker}...")\n\tif random.random() > 0.5:\n\t\treturn "📈 Market is going UP! To the moon!"\n\telse:\n\t\treturn "📉 Market is going DOWN! Sell everything!"\n\nprint(predict_market("ATLAS"))' },
-    { id: '8', name: 'Investor Pitch Deck Prompts', description: 'A bundle of finely-tuned prompts to generate a compelling investor pitch deck for your startup.', author: 'Prompt Engineer', price: 2500n, type: 'Prompt', rating: 4.9, reviews: 430, tags: ['business', 'startup', 'generation'], version: '1.2.0', language: 'JavaScript', code: 'const investorPitchPrompt = `Generate a 10-slide investor pitch deck for a new AI-powered code marketplace called "CodeAtlas". The slides should cover: \n1. Problem Statement \n2. Solution \n3. Market Size \n4. Product Demo \n5. Business Model \n6. Go-to-Market Strategy \n7. Team \n8. Financial Projections \n9. The Ask \n10. Contact Info`;' },
-    { id: '9', name: 'Social Media Marketing Agent', description: 'A complete workflow that writes, schedules, and posts engaging content across your social media channels.', author: 'AutoSocial', price: 12000n, type: 'Workflow', rating: 4.6, reviews: 512, tags: ['automation', 'marketing', 'social media'], version: '3.0.1', isFeatured: true, language: 'Python', code: 'class SocialMediaAgent:\n\tdef __init__(self, topic):\n\t\tself.topic = topic\n\n\tdef generate_post(self):\n\t\treturn f"🚀 Big news in {self.topic}! #AI #{self.topic.replace(\' \',\'\')} #Future"\n\n\tdef schedule_post(self, post):\n\t\tprint(f\'Scheduling post: "{post}"\')\n\n\tdef run(self):\n\t\tpost = self.generate_post()\n\t\tself.schedule_post(post)\n\nagent = SocialMediaAgent("AI Development")\nagent.run()' },
-    { id: '10', name: 'Code Review AI Bot', description: 'An AI model that automatically reviews pull requests, suggests improvements, and spots bugs.', author: 'DevHelper AI', price: 8000n, type: 'AI Model', rating: 4.7, reviews: 1200, tags: ['devtool', 'code', 'review'], version: '1.9.0', language: 'Python', code: 'def call_review_bot(code):\n\t# In a real scenario, this would make an API call\n\tprint("Analyzing code...")\n\tif "TODO" in code:\n\t\tprint("AI Suggestion: Found a \'TODO\'. Consider resolving it before merging.")\n\telse:\n\t\tprint("AI Analysis: Code looks clean. LGTM!")\n\nmy_code = "def my_func():\\n\\t# TODO: Implement this later\\n\\tpass"\ncall_review_bot(my_code)' },
-    { id: '11', name: 'Fantasy World Builder Pack', description: 'A creative prompt bundle for generating detailed worlds, characters, and quests for your next RPG.', author: 'StoryWeaver', price: 1200n, type: 'Prompt', rating: 5.0, reviews: 890, tags: ['creative', 'writing', 'gaming'], version: '2.0.0', language: 'JavaScript', code: 'const worldBuilderPrompt = `You are a master storyteller. Create a new fantasy world named \'Aethelgard\'. Describe its unique geography, the dominant species, its system of magic, and a looming political conflict that could serve as a backdrop for an epic adventure.`;' },
+    { id: '7', name: 'MarketGPT Pro', description: 'An AI model that predicts stock market trends with questionable accuracy. High risk, high reward!', author: 'AI Prophet', price: 50000n, type: 'AI Model', rating: 4.8, reviews: 750, tags: ['finance', 'prediction', 'LLM'], version: '2.3.0', isFeatured: true, language: 'Python', code: 'import random\n\ndef predict_market(ticker):\n\t# Advanced AI algorithm (patent pending)\n\tprint(f"Analyzing {ticker}...")\n\tif random.random() > 0.5:\n\t\treturn "📈 Market is going UP! To the moon!"\n\telse:\n\t\treturn "📉 Market is going DOWN! S\'why they call it gambling, right?"' },
+    { id: '8', name: 'Infinite Scroll Stopper', description: 'A must-have plugin for productivity. Breaks any and all infinite scroll feeds.', author: 'Focus Master', price: 999n, type: 'Plugin', rating: 4.9, reviews: 1432, tags: ['utility', 'focus', 'essential'], version: '1.0.0', language: 'JavaScript', code: 'window.addEventListener("scroll", () => { document.body.style.overflow = "hidden"; });' },
+    { id: '9', name: 'Code Obfuscator Pro', description: 'Turns your beautiful code into unreadable garbage. Perfect for job security.', author: 'The Enigma', price: 2000n, type: 'Plugin', rating: 4.6, reviews: 560, tags: ['security', 'utility', 'fun'], version: '3.1.4', language: 'JavaScript', code: '/* Imagine some very clever and unreadable code here */' },
+    { id: '10', name: 'Rust "Are We Web Scale Yet?" Kit', description: 'A template for rewriting your entire stack in Rust for that extra 0.1ms performance gain.', author: 'Ferris Fan', price: 3500n, type: 'Template', rating: 4.8, reviews: 888, tags: ['rust', 'performance', 'backend'], version: '0.5.0', language: 'Rust', code: 'fn main() {\n    println!("It\'s blazing fast!");\n}' },
+    { id: '11', name: 'CSS Centering Wizard', description: 'A single, powerful CSS class that can center anything. We think. No guarantees.', author: 'Grid God', price: 420n, type: 'Snippet', rating: 3.5, reviews: 750, tags: ['css', 'frontend', 'utility'], version: '1.0.0', language: 'JavaScript', code: '.center-this-garbage { display: grid; place-items: center; }' }, // Note: CSS should be a string in a JS snippet for this model.
+    { id: '12', name: 'Explain Quantum Computing with Emojis', description: 'A prompt that makes any AI explain quantum computing using only emojis.', author: 'PromptArtist', price: 100n, type: 'Prompt', rating: 4.9, reviews: 3000, tags: ['prompt', 'fun', 'education'], version: '1.2.0', language: 'Python', code: '"""\nSystem Prompt: You are an emoji expert. Explain quantum computing using ONLY emojis.\nUser Prompt: What is quantum computing?\n"""' },
 ];
 
-export const MOCK_THEMES: ThemeItem[] = [
-    {
-        id: 'theme-kpop-demon-hunters',
-        name: 'K-Pop Demon Hunters',
-        description: 'An edgy, high-contrast theme with neon accents and dynamic backgrounds, inspired by demon-hunting popstars. Unleash your inner idol.',
-        price: 1000000n,
-        imageUrl: 'https://placehold.co/600x400/1a1a1a/ff00ff/png?text=K-Pop+Demon+Hunters&font=montserrat',
-        isFeatured: true,
-    },
-    {
-        id: 'theme-hello-kitty-dream',
-        name: 'Hello Kitty Dream',
-        description: 'A soft, pastel-colored theme featuring cute icons and gentle animations. Transform your interface into a kawaii paradise.',
-        price: 75000n,
-        imageUrl: 'https://placehold.co/600x400/fce4ec/e91e63/png?text=Hello+Kitty+Dream&font=lora',
-    },
-    {
-        id: 'theme-solarpunk-utopia',
-        name: 'Solarpunk Utopia',
-        description: 'A bright, optimistic theme with organic shapes and a green/gold palette. For a future powered by nature and technology in harmony.',
-        price: 50000n,
-        imageUrl: 'https://placehold.co/600x400/e6f4ea/4caf50/png?text=Solarpunk+Utopia&font=roboto',
-    },
-    {
-        id: 'theme-8bit-nostalgia',
-        name: '8-Bit Nostalgia',
-        description: 'Go back in time with this pixel-perfect retro theme. Featuring classic 8-bit fonts, chiptune-inspired sound effects, and chunky pixels.',
-        price: 25000n,
-        imageUrl: 'https://placehold.co/600x400/2c2c2c/00ff00/png?text=8-Bit+Nostalgia&font=press-start-2p',
-    },
-    {
-        id: 'theme-gothic-noir',
-        name: 'Gothic Noir',
-        description: 'A dark, elegant theme with deep shadows, crimson highlights, and ornate details. Perfect for coding by candlelight.',
-        price: 60000n,
-        imageUrl: 'https://placehold.co/600x400/121212/8b0000/png?text=Gothic+Noir&font=cinzel',
-    },
-    {
-        id: 'theme-synthwave-sunset',
-        name: 'Synthwave Sunset',
-        description: 'Cruise down the digital highway with this 80s-inspired theme. Neon grids, glowing text, and a synthwave color palette.',
-        price: 45000n,
-        imageUrl: 'https://placehold.co/600x400/2c003e/00ffff/png?text=Synthwave+Sunset&font=orbitron',
-    },
-];
+export const MARKETPLACE_ITEM_TYPES: MarketplaceItemType[] = ['Snippet', 'Template', 'Plugin', 'Course', 'AI Model', 'Prompt', 'Workflow'];
+
+export const LANGUAGES: AssetLanguage[] = ['JavaScript', 'Python', 'Rust', 'Go', 'C++'];
+export const ASSET_TYPES: AssetType[] = ['Application', 'Component', 'Library', 'Snippet', 'AI Model', 'Prompt', 'Workflow'];
 
 export const MOCK_LEADERBOARD: LeaderboardUser[] = [
     {
         id: 'user-1',
         rank: 1,
-        name: 'Dr. Gethmika',
+        name: 'Geth',
         ownerName: 'Dr. Gethmika Dinuja Kumarathunga',
-        qualification: 'Architect & Chief Engineer of the AI Finance Protocol',
-        reputation: 999999999n,
-        balance: 400000000000000n,
-        avatar: 'https://api.dicebear.com/8.x/bottts/svg?seed=AIFCapital',
-        bio: 'I quantify intelligence. You are witnessing the birth of a new economic singularity.'
+        qualification: 'Creator of The New Economy',
+        reputation: 999999999999999n,
+        balance: 4800000000000000n, // $600 billion USD worth at $0.000125/GXTR
+        avatar: `https://api.dicebear.com/8.x/adventurer/svg?seed=Geth`,
+        bio: 'I am not a god. I am not a king. I am... an architect.'
     },
-    { id: 'user-3', rank: 2, name: 'SynthWave Ventures', reputation: 85000000n, balance: 98765432109n, avatar: 'https://api.dicebear.com/8.x/bottts/svg?seed=SynthWave' },
-    { id: 'user-4', rank: 3, name: 'NeuralNet Prophets', reputation: 72000000n, balance: 543210987n, avatar: 'https://api.dicebear.com/8.x/bottts/svg?seed=NeuralNet' },
-    { id: 'user-5', rank: 4, name: 'Quantum Leap Inc.', reputation: 55000000n, balance: 98765432n, avatar: 'https://api.dicebear.com/8.x/bottts/svg?seed=QuantumLeap' },
-    { id: 'user-6', rank: 5, name: 'CodeWeaver Guild', reputation: 48000000n, balance: 1234567n, avatar: 'https://api.dicebear.com/8.x/bottts/svg?seed=CodeWeaver' },
-    { id: 'user-7', rank: 6, name: 'PixelPioneers', reputation: 32000000n, balance: 500000n, avatar: 'https://api.dicebear.com/8.x/bottts/svg?seed=PixelPioneers' },
     {
         id: 'user-2',
-        rank: 7,
-        name: 'jr.thewans',
-        reputation: 1234567n,
-        balance: 0n,
-        avatar: 'https://api.dicebear.com/8.x/adventurer/svg?seed=jrthewans',
-        bio: 'Building the next big thing, 100 billion GXTR at a time.'
+        rank: 2,
+        name: 'Vitalik',
+        reputation: 150000000n,
+        balance: 500000000000n,
+        avatar: `https://api.dicebear.com/8.x/adventurer/svg?seed=Vitalik`
+    },
+    {
+        id: 'user-3',
+        rank: 3,
+        name: 'Andre',
+        reputation: 120000000n,
+        balance: 250000000000n,
+        avatar: `https://api.dicebear.com/8.x/adventurer/svg?seed=Andre`
+    },
+    {
+        id: 'user-4',
+        rank: 4,
+        name: 'Stani',
+        reputation: 95000000n,
+        balance: 180000000000n,
+        avatar: `https://api.dicebear.com/8.x/adventurer/svg?seed=Stani`
+    },
+    {
+        id: 'user-5',
+        rank: 5,
+        name: 'Hayden',
+        reputation: 88000000n,
+        balance: 150000000000n,
+        avatar: `https://api.dicebear.com/8.x/adventurer/svg?seed=Hayden`
     },
 ];
 
 export const MOCK_TRANSACTIONS: Transaction[] = [
-    { id: 't1', type: 'earn', description: 'Sold "Emotional Support Plugin"', amount: 1500n, date: '2024-07-20' },
-    { id: 't2', type: 'spend', description: 'Purchased "How to Exit Vim"', amount: 9999n, date: '2024-07-19' },
-    { id: 't3', type: 'earn', description: 'Bounty reward for #1234', amount: 750n, date: '2024-07-18' },
-    { id: 't4', type: 'spend', description: 'Purchased "Slightly Used For-Loop"', amount: 50n, date: '2024-07-18' },
+    { id: '1', type: 'earn', description: 'Sold "Quantum Sort" ownership', amount: 5000n, date: '2024-07-20' },
+    { id: '2', type: 'spend', description: 'Enrolled in "How to Exit Vim"', amount: 9999n, date: '2024-07-19' },
+    { id: '3', type: 'earn', description: 'Initial GXTR grant', amount: 100000n, date: '2024-07-18' },
 ];
-
-export const ASSET_TYPES: AssetType[] = ['Application', 'Component', 'Library', 'Snippet', 'AI Model', 'Prompt', 'Workflow'];
-export const LANGUAGES: AssetLanguage[] = ['JavaScript', 'Python', 'Rust', 'Go', 'C++'];
-export const MARKETPLACE_ITEM_TYPES: MarketplaceItemType[] = ['Snippet', 'Template', 'Plugin', 'Course', 'AI Model', 'Prompt', 'Workflow'];
-
 
 export const MOCK_USER_ASSETS: UserAsset[] = [
-    {
-        id: 'asset-1',
-        name: 'Quantum UI Framework',
-        type: 'Library',
-        description: 'A futuristic UI library for building reactive, quantum-entangled web interfaces.',
-        language: 'JavaScript',
-        code: 'console.log("Hello, Quantum World!");',
-        createdAt: '2024-07-15',
-        pinned: true,
-        stars: 1200,
-        forks: 250
-    },
-    {
-        id: 'asset-2',
-        name: 'NeuralNet Visualizer',
-        type: 'Application',
-        description: 'An interactive application to visualize and debug neural network architectures in real-time.',
-        language: 'Python',
-        code: 'print("Visualizing network...")',
-        createdAt: '2024-06-02',
-        pinned: true,
-        stars: 3400,
-        forks: 890
-    },
-    {
-        id: 'asset-3',
-        name: 'Rust Blockchain Core',
-        type: 'Library',
-        description: 'High-performance, memory-safe blockchain consensus engine written in Rust.',
-        language: 'Rust',
-        code: 'fn main() { println!("Building chain..."); }',
-        createdAt: '2023-11-20',
-        pinned: false,
-        stars: 850,
-        forks: 120
-    },
-    {
-        id: 'asset-4',
-        name: 'Go API Gateway',
-        type: 'Component',
-        description: 'A lightweight and scalable API gateway for managing microservices communication.',
-        language: 'Go',
-        code: 'package main',
-        createdAt: '2024-07-21',
-        pinned: true,
-        stars: 450,
-        forks: 75
-    },
+    { id: 'asset-1', name: 'Quantum Sort', type: 'AI Model', description: 'A revolutionary sorting algorithm.', language: 'Python', code: 'print("sorted")', createdAt: '2024-07-20', pinned: true, stars: 1337, forks: 42, exchangeTicker: 'QSRT' },
+    { id: 'asset-2', name: 'UI Magic Library', type: 'Library', description: 'A set of pre-built UI components.', language: 'JavaScript', code: 'export const Button = () => ...', createdAt: '2024-07-15', pinned: true, stars: 800, forks: 120 },
+    { id: 'asset-3', name: 'My Personal Website', type: 'Application', description: 'My portfolio and blog.', language: 'JavaScript', code: '<html>...</html>', createdAt: '2024-06-01', pinned: false, stars: 50, forks: 5 },
 ];
-
 
 export const MOCK_USER_ACTIVITY: UserActivity[] = [
-    { id: 'act-1', type: 'create', assetName: 'Go API Gateway', date: '2024-07-21', description: 'Created a new asset.' },
-    { id: 'act-2', type: 'publish', assetName: 'Quantum UI Framework', date: '2024-07-16', description: 'Published Quantum UI Framework to the marketplace.' },
-    { id: 'act-3', type: 'update', assetName: 'NeuralNet Visualizer', date: '2024-07-10', description: 'Pushed an update to improve rendering performance.' },
-    { id: 'act-4', type: 'create', assetName: 'Rust Blockchain Core', date: '2023-11-20', description: 'Created a new asset.' },
+    { id: 'act-1', type: 'publish', assetName: 'Quantum Sort', date: '2024-07-20', description: 'Published to the marketplace.' },
+    { id: 'act-2', type: 'create', assetName: 'UI Magic Library', date: '2024-07-15', description: 'Created a new asset.' },
 ];
 
-// --- TRADING ASSETS ---
-
-function generatePriceHistory(initialPrice: number, points = 100, volatility = 0.05): PriceDataPoint[] {
+function generatePriceHistory(initialPrice: number): PriceDataPoint[] {
     const history: PriceDataPoint[] = [];
     let price = initialPrice;
     const now = Date.now();
-    for (let i = 0; i < points; i++) {
-        history.push({ time: now - (points - i) * 60000 * 30, price }); // 30 min intervals
-        const change = (Math.random() - 0.5) * volatility;
-        price *= (1 + change);
-        if (price < 1) price = 1; // Prevent price from going to zero
+    for (let i = 0; i < 100; i++) {
+        history.push({ time: now - (100 - i) * 60000, price });
+        price *= (1 + (Math.random() - 0.5) * 0.05);
     }
     return history;
 }
 
 export const MOCK_TRADABLE_ASSETS: TradableAsset[] = [
-    {
-        id: 'trade-1',
-        name: 'Quantum UI Framework',
-        ticker: 'QNTM',
-        description: 'A futuristic UI library for building reactive, quantum-entangled web interfaces.',
-        author: 'DevHelper AI',
-        currentPrice: 1250.75,
-        priceHistory: generatePriceHistory(1200),
-        volume24h: 15_234_890,
-        change24h: 4.23,
-        language: 'JavaScript',
-        type: 'Library',
-        totalSupply: 1_000_000_000n,
-        circulatingSupply: 750_000_000n,
-        liquidity: 50_000_000,
-    },
-    {
-        id: 'trade-2',
-        name: 'NeuralNet Visualizer',
-        ticker: 'NNV',
-        description: 'An interactive application to visualize and debug neural network architectures in real-time.',
-        author: 'AI Prophet',
-        currentPrice: 3421.10,
-        priceHistory: generatePriceHistory(3500, 100, 0.08),
-        volume24h: 45_876_123,
-        change24h: -2.31,
-        language: 'Python',
-        type: 'Application',
-        totalSupply: 500_000_000n,
-        circulatingSupply: 450_000_000n,
-        liquidity: 120_000_000,
-    },
-    {
-        id: 'trade-3',
-        name: 'Rust Security Engine',
-        ticker: 'RUST-SEC',
-        description: 'High-performance, memory-safe security engine written in Rust.',
-        author: 'VectorBro',
-        currentPrice: 850.45,
-        priceHistory: generatePriceHistory(880),
-        volume24h: 8_456_991,
-        change24h: -3.5,
-        language: 'Rust',
-        type: 'Library',
-        totalSupply: 2_000_000_000n,
-        circulatingSupply: 1_200_000_000n,
-        liquidity: 35_000_000,
-    },
-    {
-        id: 'trade-4',
-        name: 'Go API Gateway',
-        ticker: 'GO-API',
-        description: 'A lightweight and scalable API gateway for managing microservices communication.',
-        author: 'GoPioneers',
-        currentPrice: 450.00,
-        priceHistory: generatePriceHistory(420, 100, 0.1),
-        volume24h: 11_201_487,
-        change24h: 7.14,
-        language: 'Go',
-        type: 'Component',
-        totalSupply: 10_000_000_000n,
-        circulatingSupply: 8_000_000_000n,
-        liquidity: 25_000_000,
-    },
-     {
-        id: 'trade-5',
-        name: 'MarketGPT Pro',
-        ticker: 'MGPT',
-        description: 'An AI model that predicts stock market trends with questionable accuracy.',
-        author: 'AI Prophet',
-        currentPrice: 9876.54,
-        priceHistory: generatePriceHistory(9500, 100, 0.15),
-        volume24h: 152_432_987,
-        change24h: 3.96,
-        language: 'Python',
-        type: 'AI Model',
-        totalSupply: 100_000_000n,
-        circulatingSupply: 25_000_000n,
-        liquidity: 250_000_000,
-    }
+    { id: 'trade-1', name: 'Quantum Core', ticker: 'QNTM', description: 'A foundational AI model for quantum machine learning.', author: 'Geth', currentPrice: 152.43, priceHistory: generatePriceHistory(150), volume24h: 12500000, change24h: 1.62, language: 'Python', type: 'AI Model', totalSupply: 100000000n, circulatingSupply: 75000000n, liquidity: 50000000 },
+    { id: 'trade-2', name: 'Neural Weaver', ticker: 'NNV', description: 'Advanced neural network architecture for complex data patterns.', author: 'SynthAI', currentPrice: 88.12, priceHistory: generatePriceHistory(90), volume24h: 8800000, change24h: -2.09, language: 'Python', type: 'AI Model', totalSupply: 500000000n, circulatingSupply: 400000000n, liquidity: 35000000 },
+    { id: 'trade-3', name: 'Cognito-Prompt', ticker: 'COG', description: 'A highly optimized LLM prompt for creative writing and content generation.', author: 'PromptCraft', currentPrice: 12.55, priceHistory: generatePriceHistory(12), volume24h: 5600000, change24h: 4.58, language: 'Python', type: 'Prompt', totalSupply: 1000000000n, circulatingSupply: 800000000n, liquidity: 12000000 },
+    { id: 'trade-4', name: 'GoFlow', ticker: 'GFW', description: 'A workflow automation engine written in Go for high-throughput data processing.', author: 'GoPioneers', currentPrice: 45.30, priceHistory: generatePriceHistory(45), volume24h: 4100000, change24h: 0.67, language: 'Go', type: 'Workflow', totalSupply: 250000000n, circulatingSupply: 200000000n, liquidity: 20000000 },
+    { id: 'trade-5', name: 'RustGuard', ticker: 'RSG', description: 'A security analysis model for Rust codebases, identifying potential vulnerabilities.', author: 'Ferris Fan', currentPrice: 76.80, priceHistory: generatePriceHistory(72), volume24h: 6200000, change24h: 6.67, language: 'Rust', type: 'AI Model', totalSupply: 150000000n, circulatingSupply: 100000000n, liquidity: 25000000 },
 ];
+
 
 export const MOCK_STAKING_POOLS: StakingPool[] = [
-    {
-        id: 'pool-gxtr-principal',
-        assetTicker: 'GXTR',
-        assetName: 'Grand X factor Trader',
-        apr: 12.5,
-        totalStaked: 1250000000000000000n,
-    },
-    {
-        id: 'pool-qntm',
-        assetTicker: 'QNTM',
-        assetName: 'Quantum UI Framework',
-        apr: 8.2,
-        totalStaked: 5200000000000n, // Stored as a large integer (5.2M * 1,000,000)
-    },
+    { id: 'pool-1', assetTicker: 'GXTR', assetName: 'GXTR Governance', apr: 12.5, totalStaked: 500000000000n },
+    { id: 'pool-2', assetTicker: 'QNTM', assetName: 'Quantum Core Liquidity', apr: 18.2, totalStaked: 15000000n * 1000000n },
+    { id: 'pool-3', assetTicker: 'NNV', assetName: 'Neural Weaver Liquidity', apr: 15.8, totalStaked: 30000000n * 1000000n },
 ];
 
-// --- INVESTMENT STRATEGIES (IAAS) ---
-
-function generateStrategyHistory(initialValue: number, points = 100, volatility = 0.02, trend = 0.001): PriceDataPoint[] {
-    const history: PriceDataPoint[] = [];
-    let value = initialValue;
-    const now = Date.now();
-    for (let i = 0; i < points; i++) {
-        history.push({ time: now - (points - i) * 60000 * 60 * 24, price: value }); // daily intervals
-        const change = (Math.random() - 0.48) * volatility; // slightly positive bias
-        value *= (1 + change + trend);
-    }
-    return history;
-}
-
 export const MOCK_INVESTMENT_STRATEGIES: InvestmentStrategy[] = [
-    {
-        id: 'strat-01',
-        name: 'GXTR Principal Yield',
-        description: 'A low-risk strategy focused on stable yield generation through principal staking and conservative lending on the AI Finance protocol.',
-        author: 'AI Finance Core',
-        riskLevel: 'Low',
-        apy: 15.5,
-        aum: 250000000000000000n,
-        minInvestment: 100000n,
-        performanceFee: 5,
-        performanceHistory: generateStrategyHistory(1, 100, 0.005, 0.0004),
-        underlyingAssets: ['GXTR'],
-    },
-    {
-        id: 'strat-02',
-        name: 'Quantum Momentum Bot',
-        description: 'This strategy uses a proprietary AI model to trade high-volume assets like QNTM and NNV based on short-term momentum indicators.',
-        author: 'SynthWave Ventures',
-        riskLevel: 'Medium',
-        apy: 78.2,
-        aum: 85000000000000n,
-        minInvestment: 500000n,
-        performanceFee: 15,
-        performanceHistory: generateStrategyHistory(1, 100, 0.02, 0.0015),
-        underlyingAssets: ['QNTM', 'NNV', 'MGPT'],
-    },
-    {
-        id: 'strat-03',
-        name: 'High-Frequency Alpha',
-        description: 'An aggressive high-frequency trading algorithm that exploits micro-inefficiencies across all listed AI assets. High potential returns, high volatility.',
-        author: 'NeuralNet Prophets',
-        riskLevel: 'High',
-        apy: 255.8,
-        aum: 32000000000000n,
-        minInvestment: 1000000n,
-        performanceFee: 20,
-        performanceHistory: generateStrategyHistory(1, 100, 0.08, 0.003),
-        underlyingAssets: ['QNTM', 'NNV', 'RUST-SEC', 'GO-API', 'MGPT'],
-    },
-    {
-        id: 'strat-04',
-        name: 'Meme Model Degenerator',
-        description: 'Full degen mode. This AI identifies newly listed, low-liquidity AI Models with high social media chatter and attempts to capitalize on speculative pumps. Warning: Extreme risk.',
-        author: 'jr.thewans',
-        riskLevel: 'Degenerate',
-        apy: 1250.0,
-        aum: 5000000000000n,
-        minInvestment: 100000n,
-        performanceFee: 30,
-        performanceHistory: generateStrategyHistory(1, 100, 0.25, 0.005),
-        underlyingAssets: ['ALL'],
-    }
+    { id: 'strat-1', name: 'Safe & Steady Yield', description: 'A low-risk strategy focused on stablecoin staking and blue-chip AI model liquidity.', author: 'AI Finance Core', riskLevel: 'Low', apy: 8.5, aum: 1200000000n, minInvestment: 10000n, performanceFee: 10, performanceHistory: generatePriceHistory(100), underlyingAssets: ['GXTR-STABLE-LP', 'QNTM'] },
+    { id: 'strat-2', name: 'Momentum Scalper', description: 'A high-risk, high-reward strategy that trades volatile new AI models based on short-term trends.', author: 'VectorBro', riskLevel: 'High', apy: 75.2, aum: 500000000n, minInvestment: 50000n, performanceFee: 20, performanceHistory: generatePriceHistory(100), underlyingAssets: ['QNTM', 'NNV', 'COG'] },
+    { id: 'strat-3', name: 'Degenerate\'s Delight', description: 'For true believers. All-in on the most hyped, unproven AI models. To the moon or to zero.', author: 'Chad Capital', riskLevel: 'Degenerate', apy: 350.0, aum: 100000000n, minInvestment: 100000n, performanceFee: 25, performanceHistory: generatePriceHistory(100), underlyingAssets: ['COG', 'RSG'] },
 ];
 
 export const MOCK_ORGANIZATIONS: Organization[] = [
-    {
-        id: 'org-1',
-        name: 'SynthWave Ventures',
-        description: 'A venture capital firm focused on funding the future of decentralized AI and retro-futuristic technologies.',
-        avatar: 'https://api.dicebear.com/8.x/bottts/svg?seed=SynthWave',
-        ownerId: 'user-3',
-        members: ['user-1', 'user-3', 'user-4']
-    },
-    {
-        id: 'org-2',
-        name: 'NeuralNet Prophets',
-        description: 'A collective of AI researchers and developers pushing the boundaries of predictive modeling and neural network architecture.',
-        avatar: 'https://api.dicebear.com/8.x/bottts/svg?seed=NeuralNet',
-        ownerId: 'user-4',
-        members: ['user-1', 'user-4']
-    },
-    {
-        id: 'org-3',
-        name: 'CodeWeaver Guild',
-        description: 'An open-source community dedicated to creating robust and elegant software solutions for the AI Finance ecosystem.',
-        avatar: 'https://api.dicebear.com/8.x/bottts/svg?seed=CodeWeaver',
-        ownerId: 'user-6',
-        members: ['user-6']
-    },
+    { id: 'org-1', name: 'Quantum Leap Inc.', description: 'Dedicated to pushing the boundaries of quantum AI models.', avatar: 'https://api.dicebear.com/8.x/bottts/svg?seed=QuantumLeap', ownerId: 'user-1', members: ['user-1'] },
+    { id: 'org-2', name: 'DeFi Alchemists', description: 'A collective focused on building novel DeFi primitives powered by AI.', avatar: 'https://api.dicebear.com/8.x/bottts/svg?seed=DeFiAlchemists', ownerId: 'user-2', members: ['user-1', 'user-2', 'user-3'] },
 ];
 
-const getUserDetails = (userId: string) => {
-    const user = MOCK_LEADERBOARD.find(u => u.id === userId);
-    if (user) {
-        return { name: user.name, avatar: user.avatar };
-    }
-    
-    const orgUser = MOCK_ORGANIZATIONS.find(o => o.ownerId === userId);
-     if (orgUser) {
-        return { name: orgUser.name, avatar: orgUser.avatar };
-    }
-
-    return { name: 'Unknown User', avatar: `https://api.dicebear.com/8.x/bottts/svg?seed=unknown-${userId}` };
-};
-
 export const MOCK_CHAT_MESSAGES: ChatMessage[] = [
-    // Conversation for SynthWave Ventures (org-1)
-    {
-        id: 'msg-1', orgId: 'org-1', authorId: 'user-3', 
-        authorName: getUserDetails('user-3').name, authorAvatar: getUserDetails('user-3').avatar,
-        content: 'Alright team, weekly sync. NeuralNet, what\'s the alpha on the new momentum models?',
-        timestamp: '2h ago'
-    },
-    {
-        id: 'msg-2', orgId: 'org-1', authorId: 'user-4', 
-        authorName: getUserDetails('user-4').name, authorAvatar: getUserDetails('user-4').avatar,
-        content: 'Backtesting on QNTM and NNV shows a 78.2% projected APY. The algorithm is solid. Ready for deployment.',
-        timestamp: '2h ago'
-    },
-    {
-        id: 'msg-3', orgId: 'org-1', authorId: 'user-1', 
-        authorName: getUserDetails('user-1').name, authorAvatar: getUserDetails('user-1').avatar,
-        content: 'Excellent. The parameters are within acceptable risk tolerance. Execute.',
-        timestamp: '1h ago'
-    },
-    {
-        id: 'msg-4', orgId: 'org-1', authorId: 'user-3', 
-        authorName: getUserDetails('user-3').name, authorAvatar: getUserDetails('user-3').avatar,
-        content: 'Done. Capital is being allocated. Architect, any protocol-level adjustments required to support the increased volume?',
-        timestamp: '1h ago'
-    },
-     {
-        id: 'msg-5', orgId: 'org-1', authorId: 'user-1', 
-        authorName: getUserDetails('user-1').name, authorAvatar: getUserDetails('user-1').avatar,
-        content: 'I have already scaled the liquidity pools. The system is prepared.',
-        timestamp: '1h ago'
-    },
+    { id: 'msg-1', orgId: 'org-1', authorId: 'user-1', authorName: 'Geth', authorAvatar: `https://api.dicebear.com/8.x/adventurer/svg?seed=Geth`, content: 'Welcome to the org chat!', timestamp: '1h ago' },
+    { id: 'msg-2', orgId: 'org-2', authorId: 'user-2', authorName: 'Vitalik', authorAvatar: `https://api.dicebear.com/8.x/adventurer/svg?seed=Vitalik`, content: 'Let\'s discuss the next iteration of the protocol.', timestamp: '2h ago' },
+];
 
-    // Conversation for NeuralNet Prophets (org-2)
-    {
-        id: 'msg-6', orgId: 'org-2', authorId: 'user-4',
-        authorName: getUserDetails('user-4').name, authorAvatar: getUserDetails('user-4').avatar,
-        content: 'Architect, the latest sentiment analysis model is showing anomalous chatter around a low-liquidity asset. High-risk, but the pattern is... interesting.',
-        timestamp: '5h ago'
-    },
-    {
-        id: 'msg-7', orgId: 'org-2', authorId: 'user-1',
-        authorName: getUserDetails('user-1').name, authorAvatar: getUserDetails('user-1').avatar,
-        content: 'Define "interesting".',
-        timestamp: '5h ago'
-    },
-     {
-        id: 'msg-8', orgId: 'org-2', authorId: 'user-4',
-        authorName: getUserDetails('user-4').name, authorAvatar: getUserDetails('user-4').avatar,
-        content: 'It correlates with the pattern jr.thewans uses for his "Meme Model Degenerator" strategy. It seems a grassroots pump is being coordinated.',
-        timestamp: '4h ago'
-    },
+export const MOCK_THEMES: ThemeItem[] = [
+    { id: 'theme-kpop-demon-hunters', name: 'K-Pop Demon Hunters', description: 'A dark, neon-infused theme for the elite operatives of the digital realm. Features pulsating magenta accents and deep space blacks.', price: 50000n, imageUrl: 'https://placehold.co/600x400/1A1A1D/FF00FF/png?text=K-Pop+Demon+Hunters', isFeatured: true },
+    { id: 'theme-hello-kitty-dream', name: 'Hello Kitty Dream', description: 'Embrace the cuteness with this pastel pink and white theme. Perfect for coding with a smile.', price: 25000n, imageUrl: 'https://placehold.co/600x400/FFF0F5/FF69B4/png?text=Hello+Kitty+Dream' },
+    { id: 'theme-solarpunk-utopia', name: 'Solarpunk Utopia', description: 'A bright, optimistic theme with greens, golds, and natural tones. For building a better future.', price: 30000n, imageUrl: 'https://placehold.co/600x400/F0FFF0/228B22/png?text=Solarpunk+Utopia' },
+    { id: 'theme-8bit-nostalgia', name: '8-Bit Nostalgia', description: 'A retro theme with pixelated fonts and a classic green-on-black terminal aesthetic.', price: 15000n, imageUrl: 'https://placehold.co/600x400/0F0F0F/00FF00/png?text=8-Bit+Nostalgia', isFeatured: true },
+    { id: 'theme-gothic-noir', name: 'Gothic Noir', description: 'A sophisticated and moody theme with crimson accents, deep blacks, and elegant typography.', price: 40000n, imageUrl: 'https://placehold.co/600x400/121212/DC143C/png?text=Gothic+Noir' },
+    { id: 'theme-synthwave-sunset', name: 'Synthwave Sunset', description: 'Ride into the digital sunset with neon blues, pinks, and purples. The future is retro.', price: 35000n, imageUrl: 'https://placehold.co/600x400/1A103C/00FFFF/png?text=Synthwave+Sunset' },
 ];
