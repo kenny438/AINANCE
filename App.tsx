@@ -2,8 +2,8 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 // Supabase Session type is not exported in v2 in the same way, using `any` for simplicity as per existing code.
 import { supabase } from './lib/supabase';
 import Auth from './components/Auth';
-import { AppView, MarketplaceItem, Transaction, UserAsset, UserActivity, AppAttachment, AssetType, MarketplaceItemType, TradableAsset, PortfolioHolding, LeaderboardUser, AssetLanguage, PriceDataPoint, ActiveStake, StakingPool, OpenOrder, InvestmentStrategy, ActiveInvestment, Organization, PriceAlert, ChatMessage, ThemeItem } from './types';
-import { MOCK_MARKETPLACE_ITEMS, MOCK_LEADERBOARD, MOCK_TRANSACTIONS, MOCK_USER_ASSETS, MOCK_USER_ACTIVITY, MOCK_TRADABLE_ASSETS, LANGUAGES, ASSET_TYPES, MOCK_STAKING_POOLS, MOCK_INVESTMENT_STRATEGIES, MOCK_ORGANIZATIONS, MOCK_CHAT_MESSAGES, MOCK_THEMES } from './constants';
+import { AppView, MarketplaceItem, Transaction, UserAsset, UserActivity, AppAttachment, AssetType, MarketplaceItemType, TradableAsset, PortfolioHolding, LeaderboardUser, AssetLanguage, PriceDataPoint, ActiveStake, StakingPool, OpenOrder, InvestmentStrategy, ActiveInvestment, Organization, PriceAlert, ChatMessage, ThemeItem, Post } from './types';
+import { MOCK_MARKETPLACE_ITEMS, MOCK_LEADERBOARD, MOCK_TRANSACTIONS, MOCK_USER_ASSETS, MOCK_USER_ACTIVITY, MOCK_TRADABLE_ASSETS, LANGUAGES, ASSET_TYPES, MOCK_STAKING_POOLS, MOCK_INVESTMENT_STRATEGIES, MOCK_ORGANIZATIONS, MOCK_CHAT_MESSAGES, MOCK_THEMES, MOCK_POSTS } from './constants';
 import { THEME_DEFINITIONS } from './themes';
 import Header from './components/Header';
 import CodeUniverse from './components/CodeUniverse';
@@ -227,6 +227,7 @@ const App: React.FC = () => {
   
   // AI Finance State
   const [gxtrPrice, setGxtrPrice] = useState(0.000125);
+  const [posts, setPosts] = useState<Post[]>(MOCK_POSTS);
 
   const isGlitchUser = session?.user?.email === GLITCH_USER_EMAIL;
 
@@ -1095,6 +1096,22 @@ const handleWithdraw = (investmentId: string) => {
     setChatMessages(prev => [...prev, newMessage]);
   };
 
+  const handleCreatePost = (content: string) => {
+    if (!activeUser) return;
+
+    const newPost: Post = {
+        id: `post-${Date.now()}`,
+        authorName: activeUser.name,
+        authorAvatar: activeUser.avatar,
+        content: content,
+        likes: 0,
+        comments: 0,
+        timestamp: 'Just now',
+    };
+
+    setPosts(prevPosts => [newPost, ...prevPosts]);
+  };
+
 
   if (!session) {
     return <Auth />;
@@ -1125,7 +1142,7 @@ const handleWithdraw = (investmentId: string) => {
       />
       <main className="p-4 md:p-8 pb-20 md:pb-8">
         {activeView === 'dashboard' && <Dashboard user={activeUser} balance={activeAccountData.balance} gxtrPrice={gxtrPrice} portfolio={activeAccountData.portfolio} tradableAssets={tradableAssets} transactions={activeAccountData.transactions} />}
-        {activeView === 'universe' && <CodeUniverse onStartDiscussion={(prompt) => { setInitialAIPrompt(prompt); setActiveView('ai'); }} onPreviewAttachment={setAssetToPreview} onTip={handleTip} />}
+        {activeView === 'universe' && <CodeUniverse posts={posts} activeUser={activeUser} onCreatePost={handleCreatePost} onStartDiscussion={(prompt) => { setInitialAIPrompt(prompt); setActiveView('ai'); }} onPreviewAttachment={setAssetToPreview} onTip={handleTip} />}
         {activeView === 'ai' && <AIChat isGlitchUser={isGlitchUser} initialPrompt={initialAIPrompt} onClearInitialPrompt={() => setInitialAIPrompt('')} onSaveAsset={setAssetInEditor} onRunAsset={setAssetToPreview}/>}
         {activeView === 'marketplace' && <Marketplace 
             items={MOCK_MARKETPLACE_ITEMS} 

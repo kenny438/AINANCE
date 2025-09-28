@@ -1,6 +1,5 @@
-import React from 'react';
-import { MOCK_POSTS } from '../constants';
-import { Post, AppAttachment } from '../types';
+import React, { useState } from 'react';
+import { Post, AppAttachment, LeaderboardUser } from '../types';
 import HeartIcon from './icons/HeartIcon';
 import MessageCircleIcon from './icons/MessageCircleIcon';
 import SendIcon from './icons/SendIcon';
@@ -10,6 +9,56 @@ import ChatBubbleIcon from './icons/ChatBubbleIcon';
 import GiftIcon from './icons/GiftIcon';
 import ZapIcon from './icons/ZapIcon';
 import CommunityCard from './CommunityCard';
+
+// New component for creating posts
+interface CreatePostCardProps {
+    activeUser: LeaderboardUser;
+    onCreatePost: (content: string) => void;
+}
+
+const CreatePostCard: React.FC<CreatePostCardProps> = ({ activeUser, onCreatePost }) => {
+    const [content, setContent] = useState('');
+    const [isPosting, setIsPosting] = useState(false);
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!content.trim()) return;
+
+        setIsPosting(true);
+        // Simulate a network request
+        setTimeout(() => {
+            onCreatePost(content);
+            setContent('');
+            setIsPosting(false);
+        }, 500);
+    };
+
+    return (
+        <div className="bg-surface dark:bg-dark-surface border-b border-border dark:border-dark-border p-4 mb-2 animate-fade-in">
+            <form onSubmit={handleSubmit}>
+                <div className="flex items-start space-x-3">
+                    <img src={activeUser.avatar} alt={activeUser.name} className="w-9 h-9 rounded-full" />
+                    <textarea
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}
+                        placeholder="What's on your mind?"
+                        className="w-full bg-secondary dark:bg-dark-secondary border border-border dark:border-dark-border rounded-lg p-2 text-sm resize-none focus:ring-primary focus:border-primary transition-colors"
+                        rows={3}
+                    />
+                </div>
+                <div className="flex justify-end mt-3">
+                    <button
+                        type="submit"
+                        disabled={isPosting || !content.trim()}
+                        className="px-5 py-2 rounded-full text-sm font-semibold bg-primary hover:bg-accent text-text-on-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        {isPosting ? 'Posting...' : 'Post'}
+                    </button>
+                </div>
+            </form>
+        </div>
+    );
+};
 
 const AppAttachmentCard: React.FC<{ attachment: AppAttachment, onPreview: (attachment: AppAttachment) => void }> = ({ attachment, onPreview }) => (
     <div className="mt-4 bg-secondary dark:bg-dark-secondary border border-border dark:border-dark-border rounded-lg p-4 transition-colors hover:border-text-secondary dark:hover:border-dark-text-secondary">
@@ -98,6 +147,9 @@ const PostCard: React.FC<{ post: Post, onDiscuss: (content: string) => void, onP
 });
 
 interface CodeUniverseProps {
+    posts: Post[];
+    activeUser: LeaderboardUser;
+    onCreatePost: (content: string) => void;
     onStartDiscussion: (prompt: string) => void;
     onPreviewAttachment: (attachment: AppAttachment) => void;
     onTip: (authorName: string, amount: number) => void;
@@ -120,13 +172,14 @@ const EventsCard: React.FC = () => (
     </div>
 );
 
-const CodeUniverse: React.FC<CodeUniverseProps> = ({ onStartDiscussion, onPreviewAttachment, onTip }) => {
+const CodeUniverse: React.FC<CodeUniverseProps> = ({ posts, activeUser, onCreatePost, onStartDiscussion, onPreviewAttachment, onTip }) => {
     return (
         <div className="max-w-xl mx-auto w-full flex flex-col h-full">
             <div className="overflow-y-auto h-full">
+                 <CreatePostCard activeUser={activeUser} onCreatePost={onCreatePost} />
                  <EventsCard />
                  <CommunityCard />
-                 {MOCK_POSTS.slice(0, 20).map(post => (
+                 {posts.map(post => (
                     <PostCard key={post.id} post={post} onDiscuss={onStartDiscussion} onPreviewAttachment={onPreviewAttachment} onTip={onTip} />
                 ))}
             </div>
