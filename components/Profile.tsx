@@ -180,7 +180,7 @@ const RankingTable: React.FC<{ users: LeaderboardUser[] }> = ({ users }) => {
                             <td className="p-3 font-mono text-right">
                                 <div className="flex items-center justify-end space-x-1 text-text-primary dark:text-dark-text-primary text-sm">
                                     <AtlasCoinIcon className="w-3.5 h-3.5"/>
-                                    <span>{user.balance.toLocaleString()}</span>
+                                    <span>{user.balance.toLocaleString('en-US')}</span>
                                 </div>
                             </td>
                         </tr>
@@ -266,7 +266,7 @@ const Profile: React.FC<ProfileProps> = ({ user, balance, assets, activity, onEd
                 {user.bio && <p className="text-text-secondary dark:text-dark-text-secondary mt-2">{user.bio}</p>}
                 <div className="mt-2 flex items-center justify-center sm:justify-start space-x-2">
                     <span className={`px-2 py-1 text-xs rounded-full font-bold ${tierClassName}`}>{tier}</span>
-                    <span className="text-text-secondary dark:text-dark-text-secondary text-sm">Reputation: {user.reputation.toLocaleString()}</span>
+                    <span className="text-text-secondary dark:text-dark-text-secondary text-sm">Reputation: {user.reputation.toLocaleString('en-US')}</span>
                 </div>
                 </div>
                 <div className="flex-shrink-0 flex flex-col sm:flex-row items-center gap-2 w-full sm:w-auto">
@@ -275,7 +275,7 @@ const Profile: React.FC<ProfileProps> = ({ user, balance, assets, activity, onEd
                     </button>
                     <button onClick={onWalletClick} className="w-full justify-center px-4 py-2 rounded-md font-semibold bg-primary hover:bg-accent text-text-on-primary transition-colors flex items-center space-x-2">
                         <AtlasCoinIcon className="w-5 h-5"/>
-                        <span>{balance.toLocaleString()} GXTR</span>
+                        <span>{balance.toLocaleString('en-US')} GXTR</span>
                     </button>
                 </div>
             </div>

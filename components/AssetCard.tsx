@@ -54,8 +54,8 @@ const AssetCard: React.FC<AssetCardProps> = ({ asset, onRun, onEdit, onTogglePin
             <div className="flex justify-between items-center text-sm text-text-secondary dark:text-dark-text-secondary mb-4">
                 <div className="flex items-center space-x-3 flex-wrap gap-y-1">
                    <LanguageBadge language={asset.language} />
-                   <Stat icon={<StarIcon className="w-3.5 h-3.5"/>} value={asset.stars.toLocaleString()} />
-                   <Stat icon={<ForkIcon className="w-3.5 h-3.5"/>} value={asset.forks.toLocaleString()} />
+                   <Stat icon={<StarIcon className="w-3.5 h-3.5"/>} value={asset.stars.toLocaleString('en-US')} />
+                   <Stat icon={<ForkIcon className="w-3.5 h-3.5"/>} value={asset.forks.toLocaleString('en-US')} />
                    {ownership !== undefined && <Stat icon={<PieChartIcon className="w-3.5 h-3.5"/>} value={`${ownership}%`} />}
                    {asset.exchangeTicker && <Stat icon={<TrendingUpIcon className="w-3.5 h-3.5 text-green-400"/>} value={`$${asset.exchangeTicker}`} />}
                 </div>

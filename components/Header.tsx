@@ -104,7 +104,7 @@ const Header: React.FC<HeaderProps> = ({ activeView, setActiveView, balance, onW
             >
               <AtlasCoinIcon className="w-4 h-4" />
               <span className="text-sm font-semibold tracking-wider">
-                 {Number(balance) > 9999 ? new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 1 }).format(Number(balance)) : balance.toLocaleString()}
+                 {Number(balance) > 9999 ? new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 1 }).format(Number(balance)) : balance.toLocaleString('en-US')}
               </span>
             </button>
             <div ref={dropdownRef} className="relative hidden md:block">

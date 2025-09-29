@@ -34,7 +34,7 @@ const StrategyCard: React.FC<{ strategy: InvestmentStrategy; onInvest: () => voi
                     <p className="text-xs text-brand-muted">Projected APY</p>
                 </div>
                 <div className="text-center">
-                    <p className="text-lg font-mono text-brand-light">{strategy.aum.toLocaleString()}</p>
+                    <p className="text-lg font-mono text-brand-light">{strategy.aum.toLocaleString('en-US')}</p>
                     <p className="text-xs text-brand-muted">AUM (GXTR)</p>
                 </div>
             </div>
@@ -64,14 +64,14 @@ const IaasView: React.FC<IaasViewProps> = ({ strategies, activeInvestments, onIn
                         <div className="p-3 bg-brand-bg rounded-lg"><AtlasCoinIcon className="w-7 h-7 text-brand-light" /></div>
                         <div>
                             <p className="text-sm text-brand-muted">Total Value</p>
-                            <p className="text-2xl font-bold text-brand-light">{portfolioValue.toLocaleString()} <span className="text-lg font-normal">GXTR</span></p>
+                            <p className="text-2xl font-bold text-brand-light">{portfolioValue.toLocaleString('en-US')} <span className="text-lg font-normal">GXTR</span></p>
                         </div>
                     </div>
                     <div className="flex items-center space-x-3">
                         <div className="p-3 bg-brand-bg rounded-lg"><TrendingUpIcon className={`w-7 h-7 ${totalPnl >= 0 ? 'text-green-400' : 'text-red-400'}`} /></div>
                         <div>
                             <p className="text-sm text-brand-muted">Total P/L</p>
-                            <p className={`text-2xl font-bold ${totalPnl >= 0 ? 'text-green-400' : 'text-red-400'}`}>{totalPnl.toLocaleString()} <span className="text-lg font-normal">({pnlPercentage}%)</span></p>
+                            <p className={`text-2xl font-bold ${totalPnl >= 0 ? 'text-green-400' : 'text-red-400'}`}>{totalPnl.toLocaleString('en-US')} <span className="text-lg font-normal">({pnlPercentage}%)</span></p>
                         </div>
                     </div>
                     <div className="flex items-center space-x-3">
@@ -100,8 +100,8 @@ const IaasView: React.FC<IaasViewProps> = ({ strategies, activeInvestments, onIn
                                     return (
                                         <tr key={inv.id} className="border-t border-brand-border">
                                             <td className="p-2 font-semibold">{inv.strategyName}</td>
-                                            <td className="p-2 text-right font-mono">{inv.currentValue.toLocaleString()} GXTR</td>
-                                            <td className={`p-2 text-right font-mono ${pnl >= 0 ? 'text-green-400' : 'text-red-400'}`}>{pnl.toLocaleString()} ({pnlPercent}%)</td>
+                                            <td className="p-2 text-right font-mono">{inv.currentValue.toLocaleString('en-US')} GXTR</td>
+                                            <td className={`p-2 text-right font-mono ${pnl >= 0 ? 'text-green-400' : 'text-red-400'}`}>{pnl.toLocaleString('en-US')} ({pnlPercent}%)</td>
                                             <td className="p-2 text-center">
                                                 <button onClick={() => onWithdraw(inv.id)} className="px-3 py-1 text-xs font-semibold bg-brand-secondary hover:bg-brand-border rounded-md">Withdraw</button>
                                             </td>

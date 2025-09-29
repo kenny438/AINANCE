@@ -160,7 +160,7 @@ const MonopolyGambitModal: React.FC<MonopolyGambitModalProps> = ({ isOpen, onClo
                         <span className="text-brand-muted">Cost to Play: </span>
                         <span className="font-bold text-brand-light flex items-center">
                             <AtlasCoinIcon className="w-4 h-4 mr-1" />
-                            {cost.toLocaleString()}
+                            {cost.toLocaleString('en-US')}
                         </span>
                     </div>
                     <button onClick={onClose} className="px-4 py-2 rounded-md font-semibold bg-brand-surface hover:bg-brand-border transition-colors">Close</button>

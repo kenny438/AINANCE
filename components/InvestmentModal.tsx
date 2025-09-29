@@ -86,7 +86,7 @@ const InvestmentModal: React.FC<InvestmentModalProps> = ({ state, onClose, onInv
 
                     <div className="bg-brand-bg p-3 rounded-lg border border-brand-border text-sm">
                         <div className="flex justify-between"><span className="text-brand-muted">Performance Fee</span><span className="font-semibold">{strategy.performanceFee}%</span></div>
-                        <div className="flex justify-between mt-1"><span className="text-brand-muted">Min. Investment</span><span className="font-mono">{strategy.minInvestment.toLocaleString()} GXTR</span></div>
+                        <div className="flex justify-between mt-1"><span className="text-brand-muted">Min. Investment</span><span className="font-mono">{strategy.minInvestment.toLocaleString('en-US')} GXTR</span></div>
                     </div>
                     
                     <div className="h-24">
@@ -99,7 +99,7 @@ const InvestmentModal: React.FC<InvestmentModalProps> = ({ state, onClose, onInv
                              <input id="invest-amount" type="text" value={amountStr} onChange={e => handleAmountChange(e.target.value)} placeholder="0" className="w-full bg-brand-bg border border-brand-border rounded-lg p-3 text-brand-light text-lg font-mono focus:ring-brand-light focus:border-brand-light" />
                              <button onClick={handleSetMax} className="absolute inset-y-0 right-0 px-4 text-sm font-semibold text-brand-accent hover:text-brand-light">MAX</button>
                         </div>
-                        <p className="text-xs text-brand-muted mt-1 text-right">Available: {gxtrBalance.toLocaleString()} GXTR</p>
+                        <p className="text-xs text-brand-muted mt-1 text-right">Available: {gxtrBalance.toLocaleString('en-US')} GXTR</p>
                     </div>
                 </div>
                 <div className="p-6 bg-brand-bg/30 border-t border-brand-border flex items-center space-x-3">

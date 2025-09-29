@@ -35,7 +35,7 @@ const Wallet: React.FC<WalletProps> = ({ isOpen, onClose, balance, transactions,
                     <p className="text-text-secondary dark:text-dark-text-secondary text-sm mb-1">Current Balance</p>
                     <div className="flex items-center justify-center space-x-2 text-text-primary dark:text-dark-text-primary">
                         <AtlasCoinIcon className="w-8 h-8"/>
-                        <span className="text-4xl font-bold tracking-tighter">{balance.toLocaleString()}</span>
+                        <span className="text-4xl font-bold tracking-tighter">{balance.toLocaleString('en-US')}</span>
                     </div>
                     <p className="text-text-secondary dark:text-dark-text-secondary font-light mt-1">Googolplex GXTR</p>
                 </div>
@@ -68,7 +68,7 @@ const Wallet: React.FC<WalletProps> = ({ isOpen, onClose, balance, transactions,
                                     <p className="text-text-secondary dark:text-dark-text-secondary text-xs">{tx.date}</p>
                                 </div>
                                 <span className={`font-semibold font-mono ${tx.type === 'earn' ? 'text-text-primary dark:text-dark-text-primary' : 'text-text-secondary dark:text-dark-text-secondary'}`}>
-                                    {tx.type === 'earn' ? '+' : '-'}{tx.amount.toLocaleString()}
+                                    {tx.type === 'earn' ? '+' : '-'}{tx.amount.toLocaleString('en-US')}
                                 </span>
                             </li>
                         ))}

@@ -67,7 +67,7 @@ const WalletCard: React.FC<WalletCardProps> = ({ user, balance }) => {
                         <p className="text-sm italic">"{user.bio}"</p>
                      </div>
                      <div className="border-t border-white/10 pt-2 flex justify-between items-center">
-                        <p className="text-xs uppercase text-gray-400">Reputation: <span className="font-mono text-base text-white">{user.reputation.toLocaleString()}</span></p>
+                        <p className="text-xs uppercase text-gray-400">Reputation: <span className="font-mono text-base text-white">{user.reputation.toLocaleString('en-US')}</span></p>
                         <BussinLogoIcon className={`w-12 h-12 ${isApex ? 'text-white' : 'text-current'}`} />
                      </div>
                 </div>

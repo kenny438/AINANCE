@@ -129,7 +129,7 @@ const PostCard: React.FC<{ post: Post, onDiscuss: (content: string) => void, onP
             </div>
 
             <div className="px-4 pb-4">
-                <p className="text-sm text-text-primary dark:text-dark-text-primary font-semibold mb-1">{post.likes.toLocaleString()} likes</p>
+                <p className="text-sm text-text-primary dark:text-dark-text-primary font-semibold mb-1">{post.likes.toLocaleString('en-US')} likes</p>
                 <p className="text-sm text-text-primary dark:text-dark-text-primary">
                     <span className="font-semibold mr-2 cursor-pointer hover:underline">{post.authorName}</span>
                     {post.content}
@@ -138,7 +138,7 @@ const PostCard: React.FC<{ post: Post, onDiscuss: (content: string) => void, onP
                 {post.attachment && <AppAttachmentCard attachment={post.attachment} onPreview={onPreviewAttachment} />}
 
                 <p className="text-xs text-text-secondary dark:text-dark-text-secondary mt-3 cursor-pointer hover:underline">
-                    View all {post.comments.toLocaleString()} comments
+                    View all {post.comments.toLocaleString('en-US')} comments
                 </p>
                 <p className="text-xs text-text-secondary dark:text-dark-text-secondary mt-2 uppercase">{post.timestamp}</p>
             </div>

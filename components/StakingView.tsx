@@ -30,8 +30,8 @@ const PoolCard: React.FC<{ pool: StakingPool; userStake: bigint; onStakeClick: (
     const scalingFactor = 1_000_000;
     
     const formatBigInt = (val: bigint) => {
-        if (isGxtr) return val.toLocaleString();
-        return (Number(val) / scalingFactor).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 6 });
+        if (isGxtr) return val.toLocaleString('en-US');
+        return (Number(val) / scalingFactor).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 6 });
     };
     
     return (
@@ -74,8 +74,8 @@ const StakingView: React.FC<StakingViewProps> = ({ pools, stakes, balance, portf
             <p className="text-brand-muted mb-8">Stake your assets to earn rewards and participate in the ecosystem.</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <StatCard title="Total Staked Value (GXTR)" value={totalStakedValue.toLocaleString()} icon={<LockIcon className="w-6 h-6 text-brand-light" />} />
-                <StatCard title="Total Rewards Earned (GXTR)" value={totalRewards.toLocaleString()} icon={<TrendingUpIcon className="w-6 h-6 text-brand-light" />} />
+                <StatCard title="Total Staked Value (GXTR)" value={totalStakedValue.toLocaleString('en-US')} icon={<LockIcon className="w-6 h-6 text-brand-light" />} />
+                <StatCard title="Total Rewards Earned (GXTR)" value={totalRewards.toLocaleString('en-US')} icon={<TrendingUpIcon className="w-6 h-6 text-brand-light" />} />
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -98,8 +98,8 @@ const StakingView: React.FC<StakingViewProps> = ({ pools, stakes, balance, portf
                                             const isGxtr = stake.assetTicker === 'GXTR';
                                             const scalingFactor = 1_000_000;
                                             const formatBigInt = (val: bigint) => {
-                                                if (isGxtr) return val.toLocaleString();
-                                                return (Number(val) / scalingFactor).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 6 });
+                                                if (isGxtr) return val.toLocaleString('en-US');
+                                                return (Number(val) / scalingFactor).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 6 });
                                             };
 
                                             return (

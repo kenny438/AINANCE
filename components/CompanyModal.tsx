@@ -20,9 +20,9 @@ const PurchaseOption: React.FC<{amount: number, price: number, onSelect: (amount
     >
         <div className="flex items-center space-x-2">
             <AtlasCoinIcon className="w-6 h-6 text-text-primary dark:text-dark-text-primary" />
-            <span className="text-xl font-bold text-text-primary dark:text-dark-text-primary">{amount.toLocaleString()}</span>
+            <span className="text-xl font-bold text-text-primary dark:text-dark-text-primary">{amount.toLocaleString('en-US')}</span>
         </div>
-        <p className="text-text-secondary dark:text-dark-text-secondary">${price.toLocaleString()} USD</p>
+        <p className="text-text-secondary dark:text-dark-text-secondary">${price.toLocaleString('en-US')} USD</p>
     </button>
 );
 
@@ -122,7 +122,7 @@ const CompanyModal: React.FC<CompanyModalProps> = ({ isOpen, onClose, onPurchase
                         disabled={selectedAmount <= 0 || selectedAmount > remainingLimit}
                         className="px-6 py-2 rounded-md text-sm font-semibold bg-primary hover:bg-accent text-text-on-primary transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                        Purchase {selectedAmount.toLocaleString()} GXTR
+                        Purchase {selectedAmount.toLocaleString('en-US')} GXTR
                     </button>
                 </div>
             </div>

@@ -52,11 +52,11 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ users }) => {
                       {tier}
                     </span>
                   </td>
-                  <td className="p-4 font-mono text-right text-text-primary dark:text-dark-text-primary hidden sm:table-cell">{user.reputation.toLocaleString()}</td>
+                  <td className="p-4 font-mono text-right text-text-primary dark:text-dark-text-primary hidden sm:table-cell">{user.reputation.toLocaleString('en-US')}</td>
                   <td className="p-4 font-mono text-right">
                       <div className="flex items-center justify-end space-x-1 text-text-primary dark:text-dark-text-primary">
                           <AtlasCoinIcon className="w-4 h-4"/>
-                          <span>{user.balance.toLocaleString()}</span>
+                          <span>{user.balance.toLocaleString('en-US')}</span>
                       </div>
                   </td>
                 </tr>

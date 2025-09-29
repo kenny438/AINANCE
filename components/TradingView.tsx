@@ -140,7 +140,7 @@ const TradePanel: React.FC<{
                  <div className="space-y-1">
                     <div className="flex justify-between items-center text-xs text-brand-muted">
                         <label>Total</label>
-                         <span>Balance: {balance.toLocaleString()} GXTR</span>
+                         <span>Balance: {balance.toLocaleString('en-US')} GXTR</span>
                     </div>
                     <div className="flex items-center bg-brand-bg p-2 rounded-lg border border-brand-border">
                         <input type="number" value={total} onChange={e => handleTotalChange(e.target.value)} placeholder="0.00" className="w-full bg-transparent text-brand-light focus:outline-none" />
@@ -273,10 +273,10 @@ const TradingView: React.FC<TradingViewProps> = ({ assets, onTrade, portfolio, b
                             <p className="text-sm text-brand-muted mb-4">{selectedAsset.description}</p>
                             <div className="space-y-3 text-sm">
                                <div className="flex justify-between"><span className="text-brand-muted">Author</span><span className="font-semibold text-brand-light">{selectedAsset.author}</span></div>
-                               <div className="flex justify-between"><span className="text-brand-muted">24h Volume</span><span className="font-mono text-brand-light">{selectedAsset.volume24h.toLocaleString(undefined, {maximumFractionDigits: 0})} GXTR</span></div>
-                               <div className="flex justify-between"><span className="text-brand-muted">Liquidity</span><span className="font-mono text-brand-light">{selectedAsset.liquidity.toLocaleString()} GXTR</span></div>
-                               <div className="flex justify-between"><span className="text-brand-muted">Circulating Supply</span><span className="font-mono text-brand-light">{selectedAsset.circulatingSupply.toLocaleString()}</span></div>
-                               <div className="flex justify-between"><span className="text-brand-muted">Total Supply</span><span className="font-mono text-brand-light">{selectedAsset.totalSupply.toLocaleString()}</span></div>
+                               <div className="flex justify-between"><span className="text-brand-muted">24h Volume</span><span className="font-mono text-brand-light">{selectedAsset.volume24h.toLocaleString('en-US', {maximumFractionDigits: 0})} GXTR</span></div>
+                               <div className="flex justify-between"><span className="text-brand-muted">Liquidity</span><span className="font-mono text-brand-light">{selectedAsset.liquidity.toLocaleString('en-US')} GXTR</span></div>
+                               <div className="flex justify-between"><span className="text-brand-muted">Circulating Supply</span><span className="font-mono text-brand-light">{selectedAsset.circulatingSupply.toLocaleString('en-US')}</span></div>
+                               <div className="flex justify-between"><span className="text-brand-muted">Total Supply</span><span className="font-mono text-brand-light">{selectedAsset.totalSupply.toLocaleString('en-US')}</span></div>
                             </div>
                         </div>
                     </div>
@@ -357,7 +357,7 @@ const TradingView: React.FC<TradingViewProps> = ({ assets, onTrade, portfolio, b
                                                 <span>{asset.change24h.toFixed(2)}%</span>
                                             </div>
                                         </td>
-                                        <td className="p-4 font-mono text-right text-brand-light cursor-pointer hidden sm:table-cell" onClick={() => handleSelectAsset(asset)}>{asset.volume24h.toLocaleString(undefined, {notation: 'compact'})}</td>
+                                        <td className="p-4 font-mono text-right text-brand-light cursor-pointer hidden sm:table-cell" onClick={() => handleSelectAsset(asset)}>{asset.volume24h.toLocaleString('en-US', {notation: 'compact'})}</td>
                                     </tr>
                                 );
                             })}

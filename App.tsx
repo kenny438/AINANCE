@@ -635,7 +635,7 @@ const App: React.FC = () => {
 
     const amountBigInt = BigInt(amount);
     const newTransaction: Transaction = {
-        id: `t${activeAccountData.transactions.length + 1}`, type: 'earn', description: `Purchased ${amount.toLocaleString()} GXTR`, amount: amountBigInt, date: new Date().toISOString().split('T')[0],
+        id: `t${activeAccountData.transactions.length + 1}`, type: 'earn', description: `Purchased ${amount.toLocaleString('en-US')} GXTR`, amount: amountBigInt, date: new Date().toISOString().split('T')[0],
     };
     updateActiveAccount(prev => ({
         ...prev,
@@ -842,7 +842,7 @@ const App: React.FC = () => {
         balance: prev.balance - amountBigInt,
         transactions: [tipTransaction, ...prev.transactions],
     }));
-    alert(`Successfully tipped ${authorName} ${amount.toLocaleString()} GXTR!`);
+    alert(`Successfully tipped ${authorName} ${amount.toLocaleString('en-US')} GXTR!`);
   };
 
   const handleTrade = (asset: TradableAsset, amount: number, type: 'buy' | 'sell', orderType: 'market' | 'limit' | 'stop', price?: number) => {
@@ -989,7 +989,7 @@ const App: React.FC = () => {
         return;
     }
     if (amount < strategy.minInvestment) {
-        alert(`Minimum investment is ${strategy.minInvestment.toLocaleString()} GXTR.`);
+        alert(`Minimum investment is ${strategy.minInvestment.toLocaleString('en-US')} GXTR.`);
         return;
     }
 

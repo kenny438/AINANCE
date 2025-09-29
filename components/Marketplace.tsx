@@ -80,7 +80,7 @@ const ItemCard: React.FC<ItemCardProps> = React.memo(({ item, onPurchase, owners
         <div className="flex items-center justify-between mb-4">
             <div className="flex items-center space-x-1">
                 <StarRating rating={item.rating} />
-                <span className="text-xs text-text-secondary dark:text-dark-text-secondary">({item.reviews.toLocaleString()})</span>
+                <span className="text-xs text-text-secondary dark:text-dark-text-secondary">({item.reviews.toLocaleString('en-US')})</span>
             </div>
             <span className="text-xs font-mono text-text-secondary dark:text-dark-text-secondary">v{item.version}</span>
         </div>
@@ -96,7 +96,7 @@ const ItemCard: React.FC<ItemCardProps> = React.memo(({ item, onPurchase, owners
         <div className="flex justify-between items-center">
             <div className="flex items-center space-x-1 text-text-primary dark:text-dark-text-primary">
               <AtlasCoinIcon className="w-5 h-5"/>
-              <span className="text-lg font-bold">{item.price.toLocaleString()}</span>
+              <span className="text-lg font-bold">{item.price.toLocaleString('en-US')}</span>
             </div>
             <button
               onClick={() => onPurchase(item)}
@@ -152,7 +152,7 @@ const ThemeCard: React.FC<ThemeCardProps> = React.memo(({ theme, onPurchase, isO
                  <div className="flex justify-between items-center mt-auto">
                     <div className="flex items-center space-x-1 text-text-primary dark:text-dark-text-primary">
                         <AtlasCoinIcon className="w-5 h-5"/>
-                        <span className="text-lg font-bold">{theme.price.toLocaleString()}</span>
+                        <span className="text-lg font-bold">{theme.price.toLocaleString('en-US')}</span>
                     </div>
                     <button
                         onClick={() => onPurchase(theme)}

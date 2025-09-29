@@ -51,7 +51,7 @@ const RecentActivityWidget: React.FC<{ transactions: Transaction[] }> = ({ trans
                         <p className="text-xs text-brand-muted">{tx.date}</p>
                     </div>
                     <span className={`font-mono font-semibold ${tx.type === 'earn' ? 'text-green-400' : 'text-red-400'}`}>
-                        {tx.type === 'earn' ? '+' : '-'}{tx.amount.toLocaleString()} GXTR
+                        {tx.type === 'earn' ? '+' : '-'}{tx.amount.toLocaleString('en-US')} GXTR
                     </span>
                 </li>
             ))}
@@ -75,8 +75,8 @@ const Dashboard: React.FC<DashboardProps> = ({ user, balance, gxtrPrice, portfol
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
                 <StatWidget 
                     title="Total Net Worth" 
-                    value={`$${(netWorth).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`} 
-                    subValue={`${balance.toLocaleString()} GXTR`}
+                    value={`$${(netWorth).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`} 
+                    subValue={`${balance.toLocaleString('en-US')} GXTR`}
                     icon={<DollarSignIcon className="w-7 h-7 text-brand-light"/>}
                 />
                  <StatWidget 
@@ -86,7 +86,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, balance, gxtrPrice, portfol
                 />
                  <StatWidget 
                     title="Portfolio Value" 
-                    value={`$${portfolioValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
+                    value={`$${portfolioValue.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
                     subValue={`${portfolio.length} Assets`}
                     icon={<PieChartIcon className="w-7 h-7 text-brand-light"/>}
                 />
